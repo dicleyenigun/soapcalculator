@@ -1,9 +1,6 @@
 package com.example.soapcalculator;
 
-import com.example.soapcalculator.wsdl.AddRequest;
-import com.example.soapcalculator.wsdl.AddResponse;
-import com.example.soapcalculator.wsdl.SubtractRequest;
-import com.example.soapcalculator.wsdl.SubtractResponse;
+import com.example.soapcalculator.wsdl.*;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -29,6 +26,15 @@ public class CalculatorEndpoint {
 
         SubtractResponse response = new SubtractResponse();
         response.setSubtractResult(request.getIntA() - request.getIntB());
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URL, localPart = "MultiplyRequest")
+    @ResponsePayload
+    public MultiplyResponse multiply(@RequestPayload MultiplyRequest request){
+
+        MultiplyResponse response = new MultiplyResponse();
+        response.setMultiplyResult(request.getIntA() * request.getIntB());
         return response;
     }
 
