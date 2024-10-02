@@ -1,9 +1,6 @@
 package com.example.soapcalculator.service;
 
-import com.example.soapcalculator.wsdl.AddRequest;
-import com.example.soapcalculator.wsdl.AddResponse;
-import com.example.soapcalculator.wsdl.SubtractRequest;
-import com.example.soapcalculator.wsdl.SubtractResponse;
+import com.example.soapcalculator.wsdl.*;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
@@ -34,6 +31,19 @@ public class CalculatorService extends WebServiceGatewaySupport {
                 .marshalSendAndReceive(SOAP_URL, request);
 
         return response.getSubtractResult();
+
+    }
+
+    public int multiply(int intA, int intB){
+
+        MultiplyRequest request = new MultiplyRequest();
+        request.setIntA(intA);
+        request.setIntB(intB);
+
+        MultiplyResponse response = (MultiplyResponse) getWebServiceTemplate()
+                .marshalSendAndReceive(SOAP_URL, request);
+
+        return response.getMultiplyResult();
 
     }
 }
