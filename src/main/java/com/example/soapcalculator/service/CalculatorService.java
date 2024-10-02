@@ -46,4 +46,16 @@ public class CalculatorService extends WebServiceGatewaySupport {
         return response.getMultiplyResult();
 
     }
+
+    public int divide(int intA, int intB){
+
+        DivideRequest request = new DivideRequest();
+        request.setIntA(intA);
+        request.setIntB(intB);
+
+        DivideResponse response = (DivideResponse) getWebServiceTemplate()
+                .marshalSendAndReceive(SOAP_URL,request);
+
+        return response.getDivideResult();
+    }
 }
