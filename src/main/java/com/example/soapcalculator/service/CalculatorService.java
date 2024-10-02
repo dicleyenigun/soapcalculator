@@ -5,4 +5,7 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 @Service
 public class CalculatorService extends WebServiceGatewaySupport {
+
+    private static final String SOAP_URL = "http://www.dneonline.com/calculator.asmx";
+
 }
