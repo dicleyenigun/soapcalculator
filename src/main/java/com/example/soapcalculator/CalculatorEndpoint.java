@@ -38,4 +38,13 @@ public class CalculatorEndpoint {
         return response;
     }
 
+    @PayloadRoot(namespace = NAMESPACE_URL, localPart = "DivideRequest")
+    @ResponsePayload
+    public DivideResponse subtract(@RequestPayload DivideRequest request){
+
+        DivideResponse response = new DivideResponse();
+        response.setDivideResult(request.getIntA() / request.getIntB());
+        return response;
+    }
+
 }
